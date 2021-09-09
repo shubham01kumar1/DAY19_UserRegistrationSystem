@@ -2,23 +2,28 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class UserRegistration {
+//UserRegistration class for user details validation
+class UserRegistration {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
         UserRegistration registration = new UserRegistration();
 
         System.out.println("Enter first name: ");
-        String firstName = scan.next();
-        registration.validFirstName(firstName);
+        String firstName = scan.nextLine();
+        registration.validFirstName(firstName);  //First name starts with Cap and has minimum 3 characters validation
 
-        System.out.println("/n Enter last name: ");
-        String lastName = scan.next();
-        registration.validLastName(lastName);
+        System.out.println("Enter last name: ");
+        String lastName = scan.nextLine();
+        registration.validLastName(lastName);  //last name starts with Cap and has minimum 3 characters validation
 
-        System.out.println("/n Enter Email: ");
-        String Email = scan.next();
-        registration.validEmail(Email);
+        System.out.println("Enter Email: ");
+        String Email = scan.nextLine();
+        registration.validEmail(Email);      //validating all valid emails
+
+        System.out.println("Enter Your phone number: ");
+        String phnum = scan.nextLine();
+        registration.validPhoneNum(phnum);   //validating Mobile Format-E.g. 91 9919819801-Country code follow by space and 10 digit number
     }
 
     private void validFirstName(String firstName) {
@@ -52,6 +57,17 @@ public class UserRegistration {
             System.out.println("User Email is valid :) ");
         } else {
             System.out.println("User Email name is Invalid :( ");
+        }
+    }
+
+    private void validPhoneNum(String number) {
+        String regex = "^[1-9][0-9]\\s[0-9]{10}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(number);
+        if (matcher.matches()) {
+            System.out.println("Given phone number is valid");
+        } else {
+            System.out.println("Given phone number is not valid");
         }
     }
 }
