@@ -24,6 +24,10 @@ class UserRegistration {
         System.out.println("Enter Your phone number: ");
         String phnum = scan.nextLine();
         registration.validPhoneNum(phnum);   //validating Mobile Format-E.g. 91 9919819801-Country code follow by space and 10 digit number
+
+        System.out.println("Enter Your password: ");
+        String password = scan.nextLine();
+        registration.validPassword(password);  //validating password, it should have atleast 8 character
     }
 
     private void validFirstName(String firstName) {
@@ -68,6 +72,17 @@ class UserRegistration {
             System.out.println("Given phone number is valid");
         } else {
             System.out.println("Given phone number is not valid");
+        }
+    }
+
+    private void validPassword(String password) {
+        String rule1 = "^[\\w.-@#$%^&*.!]{8,32}$";
+        Pattern pattern = Pattern.compile(rule1);
+        Matcher matcher = pattern.matcher(password);
+        if (matcher.matches()) {
+            System.out.println("Given password is valid");
+        } else {
+            System.out.println("Given password is not valid");
         }
     }
 }
