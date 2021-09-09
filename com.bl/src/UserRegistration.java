@@ -15,6 +15,10 @@ public class UserRegistration {
         System.out.println("/n Enter last name: ");
         String lastName = scan.next();
         registration.validLastName(lastName);
+
+        System.out.println("/n Enter Email: ");
+        String Email = scan.next();
+        registration.validEmail(Email);
     }
 
     private void validFirstName(String firstName) {
@@ -37,6 +41,17 @@ public class UserRegistration {
             System.out.println("User last name is valid :) ");
         } else {
             System.out.println("User last name is Invalid :( ");
+        }
+    }
+
+    private void validEmail(String Email) {
+        String regex = "^\\w+([+-_.][\\w])*\\@[\\w]+\\.(\\w{2,4}\\.)?[^\\d]{2,4}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(Email);
+        if (matcher.matches()) {
+            System.out.println("User Email is valid :) ");
+        } else {
+            System.out.println("User Email name is Invalid :( ");
         }
     }
 }
