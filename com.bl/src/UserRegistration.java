@@ -27,7 +27,7 @@ class UserRegistration {
 
         System.out.println("Enter Your password: ");
         String password = scan.nextLine();
-        registration.validPassword(password);  //validating password, it should have atleast 8 character
+        registration.validPassword(password);  //validating password, it should have atleast 8 characters and atleast upper case letter.
     }
 
     private void validFirstName(String firstName) {
@@ -75,8 +75,9 @@ class UserRegistration {
         }
     }
 
+    //rule2 for valid pass: minimum 8 characters and have atleast one upper case char.
     private void validPassword(String password) {
-        String rule1 = "^[\\w.-@#$%^&*.!]{8,32}$";
+        String rule1 = "^(?=.*[A-Z])[\\w.-@#$%^&*.!]{8,32}$";
         Pattern pattern = Pattern.compile(rule1);
         Matcher matcher = pattern.matcher(password);
         if (matcher.matches()) {
