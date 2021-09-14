@@ -30,90 +30,42 @@ class UserRegistration {
         //validating password, it should have atleast 8 characters, atleast 1 upper-case letter, have atleast 1 numeric number and 1 special char.
         registration.validPassword(password);
 
-        System.out.println("validating multiple emails ");
-        registration.multipleEmailValidation(); //validate the multiple valid and invalid emails
     }
 
-    private void validFirstName(String firstName) {
+    public boolean validFirstName(String firstName) {
         String regex = "^[A-Z][A-Za-z]{2,15}";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(firstName);
-        if (matcher.matches()) {
-            System.out.println("User first name is valid :) ");
-        }
-        else {
-            System.out.println("User first name is Invalid :( ");
-        }
+         return matcher.matches();
     }
 
-    private void validLastName(String lastName) {
+    public boolean validLastName(String lastName) {
         String regex = "^[A-Z][A-Za-z]{2,15}";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(lastName);
-        if (matcher.matches()) {
-            System.out.println("User last name is valid :) ");
-        } else {
-            System.out.println("User last name is Invalid :( ");
-        }
+        return matcher.matches();
     }
 
-    private void validEmail(String Email) {
+    public boolean validEmail(String Email) {
         String regex = "^\\w+([+-_.][\\w])*@[\\w]+\\.(\\w{2,4}\\.)?[^\\d]{2,4}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(Email);
-        if (matcher.matches()) {
-            System.out.println("User Email is valid :) ");
-        } else {
-            System.out.println("User Email name is Invalid :( ");
-        }
+        return matcher.matches();
     }
 
-    private void validPhoneNum(String number) {
+    public boolean validPhoneNum(String number) {
         String regex = "^[1-9][0-9]\\s[0-9]{10}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(number);
-        if (matcher.matches()) {
-            System.out.println("Given phone number is valid");
-        } else {
-            System.out.println("Given phone number is not valid");
-        }
+        return matcher.matches();
     }
 
     //rule2 for valid pass: minimum 8 characters, should have atleast 1 upper-case char, atleast 1 numberic num. and 1 special char.
-    private void validPassword(String password) {
+    public boolean validPassword(String password) {
         String rule1 = "^(?=.*[0-9])(?=.*[A-Z])(?=.*[.@#$%^&*!]).{8,20}$";
         Pattern pattern = Pattern.compile(rule1);
         Matcher matcher = pattern.matcher(password);
-        if (matcher.matches()) {
-            System.out.println("Given password is valid");
-        } else {
-            System.out.println("Given password is not valid");
-        }
+        return matcher.matches();
     }
 
-    public void multipleEmailValidation() {
-
-        String[] validEmail = { "abc@yahoo.com", "abc-100@yahoo.com", "abc.100@yahoo.com", "abc111@abc.com",
-                "abc-100@abc.net", "abc.100@abc.com.au", "abc@1.com", "abc@gmail.com.com", "abc+100@gmail.com" };
-        String[] InvalidEmail = { "abc", "abc@.com.my", "abc123@gmail.a", "abc123@.com", "abc123@.com.com", ".abc@abc.com",
-                "abc()*@gmail.com", "abc@%*.com", "abc..2002@gmail.com", "abc.@gmail.com", "abc@gmail.com.1a",
-                "abc@gmail.com.aa.au" };
-
-        for (String element : validEmail) {
-            String emailRegex = "^\\w+([+-_.][\\w])*@[\\w]+\\.(\\w{2,4}\\.)?[^\\d]{2,4}$";
-
-            Pattern pattern = Pattern.compile(emailRegex);
-            Matcher matcher = pattern.matcher(element);
-            System.out.println(element + " is valid: " + matcher.matches());
-        }
-        System.out.println("\n Invalid emails");
-        for (String element : InvalidEmail) {
-            String emailRegex = "^\\w+([+-_.][\\w])*@[\\w]+\\.(\\w{2,4}\\.)?[^\\d]{2,4}$";
-
-            Pattern pattern = Pattern.compile(emailRegex);
-            Matcher matcher = pattern.matcher(element);
-            System.out.println(element + " is valid: " + matcher.matches());
-        }
-
-    }
 }
