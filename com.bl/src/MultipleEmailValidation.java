@@ -30,9 +30,20 @@ public class MultipleEmailValidation {
     }
 
     @Test
-    public void givenEmailAndExpectedResult_WhenResultIsExpectedResult_ShouldPass() {
+    public void givenEmailAndExpectedResult_WhenReturnedResultIsExpectedResult_ShouldPass() {
         System.out.println("parameterised email: " + email);
-        Assert.assertEquals( expectedResult, userRegistration.validEmail(email));
+
+        boolean result = true ;
+        try {
+            result =  userRegistration.validEmail(email);
+        }
+        catch (RegistrationException e) {
+            System.out.println(e.getMessage());
+            result = false;
+        }
+        finally {
+            Assert.assertEquals(expectedResult, result);
+        }
     }
 
 }
